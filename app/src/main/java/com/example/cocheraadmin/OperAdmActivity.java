@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OperAdmActivity extends AppCompatActivity implements View.OnClickListener{
+public class OperAdmActivity extends AppCompatActivity {
 
     EditText txtlocal,txtrepre,txtcedu,txtruc,txtpate,txtmuni,txtdire,txtsiti,txthora,txtgeo;
     Button btnguar,btnatras;
@@ -29,7 +29,6 @@ public class OperAdmActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_oper_adm);
-
         txtlocal = findViewById(R.id.txtloca);
         txtrepre = findViewById(R.id.txtrepre);
         txtcedu = findViewById(R.id.txtcedu);
@@ -50,41 +49,33 @@ public class OperAdmActivity extends AppCompatActivity implements View.OnClickLi
             public void onClick(View v) {
                 String local = txtlocal.getText().toString();
                 String repre = txtrepre.getText().toString();
-                int    cedu = Integer.parseInt(txtcedu.getText().toString());
-                int    ruc = Integer.parseInt(txtruc.getText().toString());
-                int    pate = Integer.parseInt(txtpate.getText().toString());
-                int    muni = Integer.parseInt(txtmuni.getText().toString());
-                String dire = txtdire.getText().toString();
-                int    siti = Integer.parseInt(txtsiti.getText().toString());
-                int    hora = Integer.parseInt(txthora.getText().toString());
+                int cedu = Integer.parseInt(txtcedu.getText().toString());
+                int ruc = Integer.parseInt(txtruc.getText().toString());
+                int pate = Integer.parseInt(txtpate.getText().toString());
+                int muni = Integer.parseInt(txtmuni.getText().toString());
+                String  dire = txtdire.getText().toString();
+                int siti = Integer.parseInt(txtsiti.getText().toString());
+                int hora = Integer.parseInt(txthora.getText().toString());
                 String  geo = txtgeo.getText().toString();
-                guardardato(local, repre, cedu, ruc, pate, muni, dire, siti, hora, geo);
 
-
+                CargarCochera(local, repre, cedu, ruc, pate, muni, dire, siti, hora, geo);
             }
         });
-
-
-
     }
 
-    private void guardardato(String local, String repre, int cedu, int ruc, int pate, int muni, String dire, int siti, int hora, String geo) {
-        Map<String,Object> dato=new HashMap<>();
-        dato.put("local",local);
-        dato.put("representante",repre);
-        dato.put("cedula",cedu);
-        dato.put("ruc",ruc);
-        dato.put("patente",pate);
-        dato.put("codigo mmuni",muni);
-        dato.put("direccion",dire);
-        dato.put("sitios Libres",siti);
-        dato.put("Tarifa de hora",hora);
-        dato.put("localizacion",geo);
-        mDatabase.child("Cochera").push().setValue(dato);
-    }
+    private void CargarCochera(String local, String repre, int cedu, int ruc, int pate, int muni, String dire, int siti, int hora, String geo) {
+        Map<String, Object> datosCochera = new HashMap<>();
+        datosCochera.put("local", local);
+        datosCochera.put("representante", repre);
+        datosCochera.put("cedula", cedu);
+        datosCochera.put("ruc", ruc);
+        datosCochera.put("patente", pate);
+        datosCochera.put("codigo municipal", muni);
+        datosCochera.put("direccion", dire);
+        datosCochera.put("sitios libres", siti);
+        datosCochera.put("tarifa de hora", hora);
+        datosCochera.put("geolocalizacion", geo);
 
-    @Override
-    public void onClick(View v) {
-
+        mDatabase.child("Cochera").push().setValue(datosCochera);
     }
 }
