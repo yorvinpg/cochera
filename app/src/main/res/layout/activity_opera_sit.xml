@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorDarkBlue"
+    tools:context=".OperaSitActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/inicio"/>
+
+    <LinearLayout
+        android:layout_width="410dp"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="121dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="23dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="121dp"
+                android:layout_height="wrap_content"
+                android:text="@string/SL"
+                android:textColor="@color/colorA" />
+
+            <TextView
+                android:layout_width="121dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/SA"
+                android:textColor="@color/colorA" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="121dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="23dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtlibres"
+                android:layout_width="121dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorA"/>
+
+            <TextView
+                android:id="@+id/txtasignados"
+                android:layout_width="121dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/colorA"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+        <Button
+            android:layout_width="210dp"
+            android:layout_height="match_parent"
+            android:text="@string/BAS"
+            android:background="@drawable/buttonlo"
+            />
+        <Button
+            android:layout_width="210dp"
+            android:layout_height="match_parent"
+            android:text="@string/BLS"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonlo"
+            />
+    </LinearLayout>
+
+</LinearLayout>
