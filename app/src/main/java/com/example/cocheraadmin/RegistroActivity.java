@@ -108,7 +108,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
                     OnAuth(task.getResult().getUser());
                     mAuth.signOut();
                 }else {
-                    Toast.makeText(RegistroActivity.this, "Usuario ya creado", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistroActivity.this, "Administrador ya creado", Toast.LENGTH_SHORT).show();
                 }
             }
         });
