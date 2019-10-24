@@ -33,6 +33,7 @@ public class MenAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent a = new Intent(MenAdminActivity.this,OperaSitActivity.class);
+                startActivity(a);
             }
         });
     }
