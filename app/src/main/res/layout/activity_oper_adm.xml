@@ -48,22 +48,6 @@
                 android:textColor="@color/colorDarkBlue"
                 android:hint="@string/local" />
 
-            <EditText
-                android:id="@+id/txtrepre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/colorDarkBlue"
-                android:hint="@string/repre" />
-
-            <EditText
-                android:id="@+id/txtcedu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/colorDarkBlue"
-                android:hint="@string/cedu"
-                android:inputType="number" />
 
             <EditText
                 android:id="@+id/txtruc"
@@ -74,22 +58,7 @@
                 android:hint="@string/ruc"
                 android:inputType="number"/>
 
-            <EditText
-                android:id="@+id/txtpate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/colorDarkBlue"
-                android:hint="@string/patente"
-                android:inputType="number"/>
 
-            <EditText
-                android:id="@+id/txtcod"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/colorDarkBlue"
-                android:hint="@string/cod" />
 
             <EditText
                 android:id="@+id/txtdire"
@@ -130,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:textColor="@color/colorA"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="200dp"
                 android:layout_gravity="center"
                 android:background="@drawable/buttonusu"
                 android:text="@string/guardar" />
