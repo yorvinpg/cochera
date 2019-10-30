@@ -29,7 +29,7 @@
     <string name="direcc">Dirección</string>
     <string name="sitios">Número de Sitios Disponibles</string>
     <string name="hora">Tarifa por Hora.</string>
-    <string name="geo">Georreferenciación ubicación basada en latitud y longitud</string>
+    <string name="geo">PULSE PARA GUARDAR UBICACION </string>
     <string name="RC">Registro de Cochera</string>
     <string name="title_activity_busqueda">Map</string>
     <string name="latitud">Latitud:</string>

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import android.widget.Toast;
 
 import com.google.android.gms.common.internal.StringResourceValueReader;
@@ -22,6 +23,8 @@ import java.util.Map;
 
 public class OperAdmActivity extends AppCompatActivity {
 
+    private int My_PERMISSIONS_REQUEST_READ_CONTACTS;
+    private FusedLocationProviderClient mFuse;
     EditText txtlocal,txtruc,txtdire,txtsiti,txthora,txtgeo;
     Button btnguar,btnatras;
     DatabaseReference mDatabase;
