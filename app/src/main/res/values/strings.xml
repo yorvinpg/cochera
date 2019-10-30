@@ -40,4 +40,5 @@
     <string name="SA">Sitios Asignados</string>
     <string name="BAS">ASIGNAR SITIOS</string>
     <string name="BLS">LIBERAR SITIOS</string>
+    <string name="title_activity_ubicacion">Map</string>
 </resources>
