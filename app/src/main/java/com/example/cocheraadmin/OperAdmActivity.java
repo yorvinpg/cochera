@@ -48,7 +48,7 @@ public class OperAdmActivity extends AppCompatActivity {
             public void onClick(View v)
             {
                 Intent g = new Intent(OperAdmActivity.this,UbicacionActivity.class);
-                startActivity(g);
+                startActivity(g   );
             }
         });
 
