@@ -1,12 +1,18 @@
 package com.example.cocheraadmin;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.text.TextUtilsCompat;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
+import android.service.autofill.FillEventHistory;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -15,6 +21,8 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import android.widget.Toast;
 
 import com.google.android.gms.common.internal.StringResourceValueReader;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,8 +33,8 @@ public class OperAdmActivity extends AppCompatActivity {
 
     private int My_PERMISSIONS_REQUEST_READ_CONTACTS;
     private FusedLocationProviderClient mFuse;
-    EditText txtlocal,txtruc,txtdire,txtsiti,txthora,txtgeo;
-    Button btnguar,btnatras;
+    EditText txtlocal,txtruc,txtdire,txtsiti,txthora;
+    Button btnguar,btnatras,btnubi;
     DatabaseReference mDatabase;
 
     @Override
@@ -35,25 +43,27 @@ public class OperAdmActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_oper_adm);
 
+        mFuse = LocationServices.getFusedLocationProviderClient(this);
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
         txtlocal = findViewById(R.id.txtloca);
         txtruc = findViewById(R.id.txtruc);
         txtdire = findViewById(R.id.txtdire);
         txtsiti = findViewById(R.id.txtsit);
         txthora = findViewById(R.id.txthora);
-        txtgeo = findViewById(R.id.txtgeo);
+
+        btnubi = findViewById(R.id.btnubi);
         btnguar = findViewById(R.id.btnguar);
         btnatras = findViewById(R.id.btnatras);
 
-
-        txtgeo.setOnClickListener(new View.OnClickListener() {
+        btnubi.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                Intent g = new Intent(OperAdmActivity.this,UbicacionActivity.class);
-                startActivity(g   );
+            public void onClick(View v) {
+                subirLanLong();
             }
         });
+
+
 
         btnguar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,8 +73,7 @@ public class OperAdmActivity extends AppCompatActivity {
                 String dire  = txtdire.getText().toString();
                 int siti  =Integer.parseInt(txtsiti.getText().toString());
                 double hora  =Double.parseDouble(txthora.getText().toString());
-                int geo = Integer.parseInt(txtgeo.getText().toString());
-                cargardatos(local, dire,ruc, siti, hora, geo);
+                cargardatos(local, dire,ruc, siti, hora);
                 Intent o = new Intent(OperAdmActivity.this,MenAdminActivity.class);
                 startActivity(o);
 
@@ -73,17 +82,46 @@ public class OperAdmActivity extends AppCompatActivity {
             }
         });
     }
+     private void subirLanLong()
+     { if (ActivityCompat.checkSelfPermission(this,
+             Manifest.permission.ACCESS_FINE_LOCATION)
+             != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+             != PackageManager.PERMISSION_GRANTED){
 
-    private void cargardatos(String local, String dire,int ruc, int siti, double hora, int geo) {
+         ActivityCompat.requestPermissions(OperAdmActivity.this,
+                 new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                 My_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+         return;
+     }
+     mFuse.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+         @Override
+         public void onSuccess(Location location) {
+             if (location !=null){
+                 Log.e("Latitud:",+ location.getLatitude()+"Longitud:"+location.getLongitude());
+                 Map<String, Object> latlang = new HashMap<>();
+                 latlang.put("latitud",location.getLatitude());
+                 latlang.put("longitud",location.getLongitude());
+                 mDatabase.child("Cochera").push().setValue(latlang);
+                 Toast.makeText(OperAdmActivity.this, "Ubicacion Guardada", Toast.LENGTH_SHORT).show();
+             }else{
+                 Toast.makeText(OperAdmActivity.this, "No Guardado", Toast.LENGTH_SHORT).show();
+             }
+
+         }
+     });
+
+     }
+
+    private void cargardatos(String local, String dire,int ruc, int siti, double hora) {
         Map<String, Object> datoCochera = new HashMap<>();
         datoCochera.put("local", local);
         datoCochera.put("ruc",ruc);
         datoCochera.put("direccion",dire);
         datoCochera.put("sitio", siti);
         datoCochera.put("tarifa", hora);
-        datoCochera.put("localizacion", geo);
-
         mDatabase.child("Cochera").push().setValue(datoCochera);
+        Toast.makeText(OperAdmActivity.this,"Guardado",Toast.LENGTH_SHORT).show();
     }
 
 }
