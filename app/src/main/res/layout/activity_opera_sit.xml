@@ -69,12 +69,14 @@
             android:orientation="vertical"
             android:gravity="center">
         <Button
+            android:id="@+id/btnasignar"
             android:layout_width="210dp"
             android:layout_height="match_parent"
             android:text="@string/BAS"
             android:background="@drawable/buttonlo"
             />
         <Button
+            android:id="@+id/btnliberar"
             android:layout_width="210dp"
             android:layout_height="match_parent"
             android:text="@string/BLS"

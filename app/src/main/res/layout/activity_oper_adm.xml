@@ -58,6 +58,24 @@
                 android:hint="@string/ruc"
                 android:inputType="number"/>
 
+            <EditText
+                android:id="@+id/txtdni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorDarkBlue"
+                android:hint="@string/dni"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/txtcell"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorDarkBlue"
+                android:hint="@string/cell"
+                android:inputType="number"/>
+
 
 
             <EditText

@@ -33,7 +33,7 @@ public class OperAdmActivity extends AppCompatActivity {
 
     private int My_PERMISSIONS_REQUEST_READ_CONTACTS;
     private FusedLocationProviderClient mFuse;
-    EditText txtlocal,txtruc,txtdire,txtsiti,txthora;
+    EditText txtlocal,txtruc,txtdni,txtcell,txtdire,txtsiti,txthora;
     Button btnguar,btnatras,btnubi;
     DatabaseReference mDatabase;
 
@@ -47,7 +47,9 @@ public class OperAdmActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         txtlocal = findViewById(R.id.txtloca);
-        txtruc = findViewById(R.id.txtruc);
+        txtruc   = findViewById(R.id.txtruc);
+        txtdni   = findViewById(R.id.txtdni);
+        txtcell  = findViewById(R.id.txtcell);
         txtdire = findViewById(R.id.txtdire);
         txtsiti = findViewById(R.id.txtsit);
         txthora = findViewById(R.id.txthora);
@@ -69,11 +71,13 @@ public class OperAdmActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String local = txtlocal.getText().toString();
-                int ruc   =Integer.parseInt( txtruc.getText().toString());
+                int    ruc   = Integer.parseInt( txtruc.getText().toString());
+                int    dni   = Integer.parseInt(txtdni.getText().toString());
+                int    cell  = Integer.parseInt(txtcell.getText().toString());
                 String dire  = txtdire.getText().toString();
-                int siti  =Integer.parseInt(txtsiti.getText().toString());
-                double hora  =Double.parseDouble(txthora.getText().toString());
-                cargardatos(local, dire,ruc, siti, hora);
+                int    siti  = Integer.parseInt(txtsiti.getText().toString());
+                double hora  = Double.parseDouble(txthora.getText().toString());
+                cargardatos(local, dire,ruc,dni,cell, siti, hora);
                 Intent o = new Intent(OperAdmActivity.this,MenAdminActivity.class);
                 startActivity(o);
 
@@ -113,10 +117,12 @@ public class OperAdmActivity extends AppCompatActivity {
 
      }
 
-    private void cargardatos(String local, String dire,int ruc, int siti, double hora) {
+    private void cargardatos(String local, String dire,int ruc,int dni, int cell, int siti, double hora) {
         Map<String, Object> datoCochera = new HashMap<>();
         datoCochera.put("local", local);
         datoCochera.put("ruc",ruc);
+        datoCochera.put("dni", dni);
+        datoCochera.put("cell",cell);
         datoCochera.put("direccion",dire);
         datoCochera.put("sitio", siti);
         datoCochera.put("tarifa", hora);

@@ -24,6 +24,8 @@
     <string name="repre">Nombre del Representante</string>
     <string name="cedu">Cédula del Representante</string>
     <string name="ruc">RUC.</string>
+    <string name="dni">D.N.I.</string>
+    <string name="cell">Numero de Celular</string>
     <string name="patente">Número de Patente</string>
     <string name="cod">Código Municipal</string>
     <string name="direcc">Dirección</string>
